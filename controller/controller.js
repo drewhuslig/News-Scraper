@@ -108,7 +108,7 @@ router.post("/articles/saved/:id", function(req, res) {
 });
 
 //Route to delete article from saved
-router.post("/articles/delete:id", function(req, res) {
+router.post("/articles/delete/:id", function(req, res) {
   Article.findOneAndUpdate(
     { _id: req.params.id },
     { saved: false, comments: [] }

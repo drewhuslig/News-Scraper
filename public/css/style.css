@@ -120,11 +120,11 @@ section {
     text-decoration: underline;
 }
 
-.previousNotes {
+.previousComments {
     float: left;
 }
 
-#notes,
+#comments,
 .modal-title {
     color: black;
 }

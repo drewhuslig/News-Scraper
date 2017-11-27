@@ -3,7 +3,6 @@ $("#scrape").on("click", function() {
     method: "GET",
     url: "/scrape"
   }).done(function(data) {
-    console.log(data);
     window.location = "/";
   });
 });
@@ -28,35 +27,35 @@ $(".delete").on("click", function() {
   });
 });
 
-$(".saveNote").on("click", function() {
+$(".saveComment").on("click", function() {
   var thisId = $(this).attr("data-id");
-  if (!$("#noteText" + thisId).val()) {
-    alert("please enter a note to save");
+  if (!$("#commentText" + thisId).val()) {
+    alert("please enter a comment to save");
   } else {
     $.ajax({
       method: "POST",
       url: "/comment/save/" + thisId,
       data: {
-        text: $("#noteText" + thisId).val()
+        text: $("#commentText" + thisId).val()
       }
     }).done(function(data) {
       console.log(data);
-      $("#noteText" + thisId).val("");
-      $(".modalNote").modal("hide");
+      $("#commentText" + thisId).val("");
+      $(".modalComment").modal("hide");
       window.location = "/saved";
     });
   }
 });
 
-$(".deleteNote").on("click", function() {
-  var noteId = $(this).attr("data-note-id");
+$(".deleteComment").on("click", function() {
+  var commentId = $(this).attr("data-comment-id");
   var articleId = $(this).attr("data-article-id");
   $.ajax({
     method: "DELETE",
-    url: "/comment/delete/" + noteId + "/" + articleId
+    url: "/comment/delete/" + commentId + "/" + articleId
   }).done(function(data) {
     console.log(data);
-    $(".modalNote").modal("hide");
+    $(".modalComment").modal("hide");
     window.location = "/saved";
   });
 });
